@@ -1,5 +1,5 @@
 ---
-title: Get Started with EF Core
-tags: EFCore
+title: Migrating Entity Framework to Entity Framework Core
+tags: EFCore dotnet5
 ---
 
