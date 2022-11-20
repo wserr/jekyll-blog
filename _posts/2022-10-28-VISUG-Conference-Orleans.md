@@ -32,16 +32,16 @@ Let's look into a simple example. Suppose that we want to create a small game wi
 
 ```mermaid
 graph TD;
-subgraph Game Example
-A[Player 1]
-B[Player 2]
-E[Game]
-F[Chat]
-A-->E
-B-->E
-A<-->F
-B<-->F
-end
+subgraph Game Example;
+A[Player 1];
+B[Player 2];
+E[Game];
+F[Chat];
+A-->E;
+B-->E;
+A<-->F;
+B<-->F;
+end;
 ```
 
 ### Grain
@@ -50,11 +50,11 @@ A grain is simply another word for an Actor. It consists of 3 parts:
 
 ```mermaid
 graph TD;
-subgraph grain
-A[Identity]
-B[Behavior]
-C["State (optional)"]
-end
+subgraph grain;
+A[Identity];
+B[Behavior];
+C["State (optional)"];
+end;
 ```
 
 The **Identity** can be a name, guid, number, ...
@@ -84,22 +84,22 @@ Below, the previous example of the game is illustrated, with the actors being pl
 
 ```mermaid
 graph TD;
-subgraph Game Example
-subgraph Player Silo
-A[Player 1]
-B[Player 2]
-end
-subgraph Game Silo
-E[Game]
-end
-subgraph Chat Silo
-F[Chat]
-end
-A-->E
-B-->E
-A<-->F
-B<-->F
-end
+subgraph Game Example;
+subgraph Player Silo;
+A[Player 1];
+B[Player 2];
+end;
+subgraph Game Silo;
+E[Game];
+end;
+subgraph Chat Silo;
+F[Chat];
+end;
+A-->E;
+B-->E;
+A<-->F;
+B<-->F;
+end;
 ```
 
 ### Dashboard
@@ -135,29 +135,29 @@ This is called a `heterogenous silo`: the silo contains not only grains, but ser
 
 ```mermaid
 graph TD;
-subgraph Game Example with heterogenous silos
-subgraph Player Silo
-A[Player 1]
-B[Player 2]
-end
-subgraph Game Silo
-E[Game]
-end
-subgraph Chat Silo
-F[Chat]
-end
-subgraph Heterogenous silo
-G[Backend]
-end
-H[Frontend]
-end
-A-->E
-B-->E
-A<-->F
-B<-->F
-A<-->G
-E<-->G
-G<-->H
+subgraph Game Example with heterogenous silos;
+subgraph Player Silo;
+A[Player 1];
+B[Player 2];
+end;
+subgraph Game Silo;
+E[Game];
+end;
+subgraph Chat Silo;
+F[Chat];
+end;
+subgraph Heterogenous silo;
+G[Backend];
+end;
+H[Frontend];
+end;
+A-->E;
+B-->E;
+A<-->F;
+B<-->F;
+A<-->G;
+E<-->G;
+G<-->H;
 ```
 
 ## When to use
