@@ -3,6 +3,9 @@ on:
     branches:
       - my-blog
     types: [closed]
+  push:
+    branches:
+      - my-blog
 jobs:
   # `build` is a user-defined name for this job
   publish-blog-content:
