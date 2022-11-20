@@ -5,6 +5,7 @@ key: "visugxl2022orleans"
 tags: dotnet csharp orleans
 aside:
     toc: true
+mermaid: true
 ---
 
 During [VisugXL][6], there was a talk about Orleans by Johnny Hooyberghs. This is the summary of my notes during that talk.
