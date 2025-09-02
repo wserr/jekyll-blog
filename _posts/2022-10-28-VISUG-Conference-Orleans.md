@@ -14,7 +14,7 @@ During [VisugXL][6], there was a talk about Orleans by Johnny Hooyberghs. This i
 
 ## What is Orleans?
 
-Orleans is Microsoft's implementation of the actor model. 
+Orleans is Microsoft's implementation of the actor model.
 It is also called a `Virtual Actor Model`, because we can always reach all actors defined in the system.
 If the actor is not loaded in memory yet, Orleans will spin it up for us.
 
@@ -24,7 +24,7 @@ When an actor is not used for a long time, it will be deactivated by the garbage
 
 ### Actor Model
 
->The actor model is a programming model in which each actor is a lightweight, concurrent, immutable object that encapsulates a piece of state and corresponding behavior. 
+>The actor model is a programming model in which each actor is a lightweight, concurrent, immutable object that encapsulates a piece of state and corresponding behavior.
 
 [Microsoft learn][1]
 
@@ -32,16 +32,18 @@ Let's look into a simple example. Suppose that we want to create a small game wi
 
 ```mermaid
 graph TD;
-subgraph Game Example;
-A[Player 1];
-B[Player 2];
-E[Game];
-F[Chat];
-A-->E;
-B-->E;
-A<-->F;
-B<-->F;
-end;
+
+  subgraph Game Example
+  A[Player 1]
+  B[Player 2]
+  E[Game]
+  F[Chat]
+  A-->E
+  B-->E
+  A---F
+  B---F
+
+  end
 ```
 
 ### Grain
@@ -63,7 +65,7 @@ Anything goes. The only requirement is that it should be unique for each grain w
 The **Behavior** identifies the business logic that the actor should handle.
 
 The **State** can be persisted to a database, or can be kept in memory for test projects as well.
-Multiple implementations exist to persist a grain state, ranging from SQL server to postgres. 
+Multiple implementations exist to persist a grain state, ranging from SQL server to postgres.
 You can also write your own implementations.
 
 Important to note is that a grain is always **single-threaded**. This is to prevent conflicting state changes.
@@ -77,29 +79,29 @@ All grains can talk to each other, regardless of which silo they are in.
 
 > Keep in mind, when a lot of communication exists between certain grains, they preferrably exist in the same silo.
 This is because communication between grains in the same silo is more performant.
-The Orleans framework allows us to configure in which silo a grain will be created. 
+The Orleans framework allows us to configure in which silo a grain will be created.
 However, we are not required to configure this. The framework can take care of the **grain placement** as well.
 
 Below, the previous example of the game is illustrated, with the actors being placed in different silos. Actors can communicate with one another, regardless of which silo they are in.
 
 ```mermaid
 graph TD;
-subgraph Game Example;
-subgraph Player Silo;
-A[Player 1];
-B[Player 2];
-end;
-subgraph Game Silo;
-E[Game];
-end;
-subgraph Chat Silo;
-F[Chat];
-end;
-A-->E;
-B-->E;
-A<-->F;
-B<-->F;
-end;
+  subgraph Game Example
+  subgraph Player Silo
+  A[Player 1]
+  B[Player 2]
+  end
+  subgraph Game Silo
+  E[Game]
+  end
+  subgraph Chat Silo
+  F[Chat]
+  end
+  A-->E
+  B-->E
+  A---F
+  B---F
+  end
 ```
 
 ### Dashboard
@@ -135,29 +137,29 @@ This is called a `heterogenous silo`: the silo contains not only grains, but ser
 
 ```mermaid
 graph TD;
-subgraph Game Example with heterogenous silos;
-subgraph Player Silo;
-A[Player 1];
-B[Player 2];
-end;
-subgraph Game Silo;
-E[Game];
-end;
-subgraph Chat Silo;
-F[Chat];
-end;
-subgraph Heterogenous silo;
-G[Backend];
-end;
-H[Frontend];
-end;
-A-->E;
-B-->E;
-A<-->F;
-B<-->F;
-A<-->G;
-E<-->G;
-G<-->H;
+  subgraph Game Example with heterogenous silos
+  subgraph Player Silo
+  A[Player 1]
+  B[Player 2]
+  end
+  subgraph Game Silo
+  E[Game]
+  end
+  subgraph Chat Silo
+  F[Chat]
+  end
+  subgraph Heterogenous silo
+  G[Backend]
+  end
+  H[Frontend]
+  end
+  A---E
+  B---E
+  A---F
+  B---F
+  A---G
+  E---G
+  G---H
 ```
 
 ## When to use
@@ -172,7 +174,7 @@ To me, [kubernetes hosting][5] seems the most interesting, because it is very sc
 
 ## Conclusion
 
-Orleans is Microsoft's implementation of the `virtual actor pattern`. 
+Orleans is Microsoft's implementation of the `virtual actor pattern`.
 Through [easy-to-grasp concepts](#definitions), it becomes relatively easy to write scalable .NET applications, without much boilerplate code.
 Debugging becomes easy with the [open-source dashboard project][2].
 
